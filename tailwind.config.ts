@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Bitcoin theme colors
+				bitcoin: {
+					DEFAULT: '#F7931A',  // Bitcoin orange
+					light: '#FEC6A1',    // Light orange
+					dark: '#E67E22',     // Deep orange
+					darkest: '#D35400',  // Very dark orange
+					text: '#4A4A4A',     // Dark gray for text
 				}
 			},
 			borderRadius: {
@@ -69,26 +78,65 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+				"accordion-down": {
+					from: { height: "0" },
+					to: { height: "var(--radix-accordion-content-height)" },
 				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+				"accordion-up": {
+					from: { height: "var(--radix-accordion-content-height)" },
+					to: { height: "0" },
+				},
+				"fade-in": {
+					"0%": { opacity: "0", transform: "translateY(10px)" },
+					"100%": { opacity: "1", transform: "translateY(0)" }
+				},
+				"fade-out": {
+					"0%": { opacity: "1", transform: "translateY(0)" },
+					"100%": { opacity: "0", transform: "translateY(10px)" }
+				},
+				"pulse-orange": {
+					"0%, 100%": { opacity: "1" },
+					"50%": { opacity: "0.7" }
+				},
+				"float": {
+					"0%": { transform: "translateY(0px)" },
+					"50%": { transform: "translateY(-10px)" },
+					"100%": { transform: "translateY(0px)" }
+				},
+				"text-shimmer": {
+					"0%": { backgroundPosition: "0% 50%" },
+					"50%": { backgroundPosition: "100% 50%" },
+					"100%": { backgroundPosition: "0% 50%" }
+				},
+				"rotate-slow": {
+					"0%": { transform: "rotate(0deg)" },
+					"100%": { transform: "rotate(360deg)" }
+				},
+				"slide-in-right": {
+					"0%": { transform: "translateX(100%)", opacity: "0" },
+					"100%": { transform: "translateX(0)", opacity: "1" }
+				},
+				"slide-in-left": {
+					"0%": { transform: "translateX(-100%)", opacity: "0" },
+					"100%": { transform: "translateX(0)", opacity: "1" }
 				}
 			},
 			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				"accordion-down": "accordion-down 0.2s ease-out",
+				"accordion-up": "accordion-up 0.2s ease-out",
+				"fade-in": "fade-in 0.5s ease-out",
+				"fade-in-slow": "fade-in 0.8s ease-out",
+				"pulse-orange": "pulse-orange 2s infinite ease-in-out",
+				"float": "float 3s infinite ease-in-out",
+				"text-shimmer": "text-shimmer 3s infinite",
+				"rotate-slow": "rotate-slow 20s linear infinite",
+				"slide-in-right": "slide-in-right 0.5s ease-out",
+				"slide-in-left": "slide-in-left 0.5s ease-out"
+			},
+			backgroundImage: {
+				"bitcoin-gradient": "linear-gradient(90deg, #F7931A 0%, #E67E22 50%, #D35400 100%)",
+				"dark-gradient": "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8))",
+				"shimmer-gradient": "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,0) 100%)"
 			}
 		}
 	},
