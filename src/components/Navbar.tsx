@@ -35,7 +35,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 animate-fade-in">
           <Bitcoin className="h-8 w-8 text-bitcoin animate-pulse-orange" />
-          <span className="text-2xl font-bold text-gradient typing-effect">BTCstack</span>
+          <span className="text-2xl font-bold text-white">BTCstack</span>
         </Link>
 
         {/* Desktop Navigation */}
