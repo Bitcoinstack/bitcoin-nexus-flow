@@ -88,7 +88,7 @@ const About = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient shimmer animate-text reveal-text">About BTCstack</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white animate-text reveal-text">About BTCstack</h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto animate-text fade-in-up split-words">
             A revolutionary platform built to optimize your Bitcoin experience across multiple Layer 2 networks
           </p>
@@ -102,7 +102,7 @@ const About = () => {
                 <Shield className="h-8 w-8 text-bitcoin" />
               </div>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-bitcoin animate-pulse-orange">Quantum Resistant Security</h3>
+            <h3 className="text-2xl font-bold mb-4 text-bitcoin">Quantum Resistant Security</h3>
             <div className="typing-container animate-text">
               <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Our protocol implements quantum-resistant algorithms and zero-knowledge proofs to create an unprecedented layer of 
@@ -121,7 +121,7 @@ const About = () => {
                 <Rocket className="h-8 w-8 text-bitcoin" />
               </div>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-bitcoin animate-pulse-orange">Real-time Layer 2 Switching</h3>
+            <h3 className="text-2xl font-bold mb-4 text-bitcoin">Real-time Layer 2 Switching</h3>
             <div className="typing-container animate-text">
               <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Seamlessly switch between Rootstock, Liquid, Lightning, and other Bitcoin Layer 2 solutions in real-time.
@@ -139,7 +139,7 @@ const About = () => {
                 <TrendingUp className="h-8 w-8 text-bitcoin" />
               </div>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-bitcoin animate-pulse-orange">Bitcoin Yield Aggregator</h3>
+            <h3 className="text-2xl font-bold mb-4 text-bitcoin">Bitcoin Yield Aggregator</h3>
             <div className="typing-container animate-text">
               <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Automatically optimize your Bitcoin holdings through Layer 2 DeFi protocols, ETFs, and stablecoin swaps.
