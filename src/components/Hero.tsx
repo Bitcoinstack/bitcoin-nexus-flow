@@ -16,7 +16,39 @@ const Hero = () => {
       }
     };
 
+    // Text animation effect
+    const animateText = () => {
+      const textElements = document.querySelectorAll('.hero-text-animate');
+      textElements.forEach((element, index) => {
+        if (element instanceof HTMLElement) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+          element.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        }
+      });
+    };
+
+    // Split text animation for character by character effect
+    document.querySelectorAll('.split-letters').forEach(element => {
+      const text = element.textContent || '';
+      const letters = text.split('');
+      
+      element.textContent = '';
+      
+      letters.forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.className = 'animated-letter';
+        span.textContent = letter;
+        if (span instanceof HTMLElement) {
+          span.style.animationDelay = `${index * 0.05}s`;
+        }
+        element.appendChild(span);
+      });
+    });
+
     window.addEventListener('scroll', handleScroll);
+    setTimeout(animateText, 300);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -44,23 +76,21 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-12 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient animate-fade-in shimmer">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient animate-fade-in shimmer split-letters">
           BTCstack
         </h1>
-        <p className="text-xl md:text-2xl text-white mb-8 animate-fade-in-slow">
-          <span className="inline-block animate-slide-in-right">The ultimate</span>{" "}
-          <span className="inline-block animate-slide-in-left" style={{ animationDelay: "0.3s" }}>Bitcoin Layer 2</span>{" "}
-          <span className="inline-block animate-slide-in-right" style={{ animationDelay: "0.6s" }}>Aggregator Protocol</span>
+        <p className="text-xl md:text-2xl text-white mb-8 split-words hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)' }}>
+          The ultimate Bitcoin Layer 2 Aggregator Protocol
         </p>
 
-        <div className="max-w-3xl mx-auto mb-12 bg-black/30 backdrop-blur-md p-6 rounded-xl animate-fade-in" style={{ animationDelay: "0.8s" }}>
+        <div className="max-w-3xl mx-auto mb-12 bg-black/30 backdrop-blur-md p-6 rounded-xl animate-fade-in hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)', transitionDelay: '0.3s' }}>
           <p className="text-lg text-white mb-4">
-            Seamlessly switch between Rootstock, Liquid, and Lightning for optimal fees and performance.
-            Experience quantum-resistant zero-knowledge security and maximize your Bitcoin yield.
+            <span className="block mb-2 split-words">Seamlessly switch between Rootstock, Liquid, and Lightning for optimal fees and performance.</span>
+            <span className="block split-words">Experience quantum-resistant zero-knowledge security and maximize your Bitcoin yield.</span>
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "1s" }}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)', transitionDelay: '0.6s' }}>
           <Link to="/dashboard">
             <Button className="bg-bitcoin hover:bg-bitcoin-dark text-white font-bold py-6 px-8 rounded-xl text-xl transition-all hover:scale-105">
               Launch App
@@ -74,16 +104,16 @@ const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 animate-fade-in-slow" style={{ animationDelay: "1.2s" }}>
-          <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 staggered-animation animate-text">
+          <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl stagger-item" style={{ opacity: 0, transform: 'translateY(20px)' }}>
             <h4 className="text-bitcoin text-lg font-semibold">Quantum Resistant</h4>
             <p className="text-white text-opacity-80">Future-proof security for all transactions</p>
           </div>
-          <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl">
+          <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl stagger-item" style={{ opacity: 0, transform: 'translateY(20px)' }}>
             <h4 className="text-bitcoin text-lg font-semibold">Zero Knowledge</h4>
             <p className="text-white text-opacity-80">Enhanced privacy protection</p>
           </div>
-          <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl">
+          <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl stagger-item" style={{ opacity: 0, transform: 'translateY(20px)' }}>
             <h4 className="text-bitcoin text-lg font-semibold">Yield Aggregator</h4>
             <p className="text-white text-opacity-80">Highest APRs across Layer 2 solutions</p>
           </div>

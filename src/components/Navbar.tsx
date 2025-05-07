@@ -21,7 +21,10 @@ const Navbar = () => {
     // Initialize text animation for nav links
     const navLinks = document.querySelectorAll('.nav-link span');
     navLinks.forEach((span, index) => {
-      span.style.animationDelay = `${index * 0.1}s`;
+      // Type assertion to HTMLElement since we know it's an HTML element
+      if (span instanceof HTMLElement) {
+        span.style.animationDelay = `${index * 0.1}s`;
+      }
     });
 
     return () => window.removeEventListener('scroll', handleScroll);

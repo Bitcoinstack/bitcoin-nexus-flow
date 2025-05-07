@@ -18,12 +18,41 @@ const Index = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          
+          // Add staggered animation to child text elements
+          if (entry.target.classList.contains('staggered-animation')) {
+            const children = entry.target.querySelectorAll('.stagger-item');
+            children.forEach((child, index) => {
+              if (child instanceof HTMLElement) {
+                child.style.animationDelay = `${index * 0.1}s`;
+                child.classList.add('visible');
+              }
+            });
+          }
         }
       });
     }, { threshold: 0.1 });
     
     animatedElements.forEach(el => {
       observer.observe(el);
+    });
+    
+    // Split text into individual words for word-by-word animation
+    document.querySelectorAll('.split-words').forEach(element => {
+      const text = element.textContent || '';
+      const words = text.split(' ');
+      
+      element.textContent = '';
+      
+      words.forEach((word, index) => {
+        const span = document.createElement('span');
+        span.className = 'animated-word';
+        span.textContent = word + ' ';
+        if (span instanceof HTMLElement) {
+          span.style.animationDelay = `${index * 0.1}s`;
+        }
+        element.appendChild(span);
+      });
     });
     
     return () => {
