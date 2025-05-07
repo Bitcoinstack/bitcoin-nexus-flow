@@ -108,7 +108,40 @@
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f7931a' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
     animation: texture-scroll 20s linear infinite;
   }
-  
+
+  /* Bitcoin network animation background */
+  @keyframes float-circles {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+
+  .bg-bitcoin-circles {
+    background-color: #000;
+    background-image: radial-gradient(circle at 25% 35%, rgba(247, 147, 26, 0.15) 0%, transparent 40%),
+                     radial-gradient(circle at 75% 65%, rgba(247, 147, 26, 0.15) 0%, transparent 40%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .bitcoin-network {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(247, 147, 26, 0.3) 0%, transparent 10%),
+      radial-gradient(circle at 80% 20%, rgba(247, 147, 26, 0.2) 0%, transparent 15%),
+      radial-gradient(circle at 40% 80%, rgba(247, 147, 26, 0.2) 0%, transparent 10%),
+      radial-gradient(circle at 70% 60%, rgba(247, 147, 26, 0.3) 0%, transparent 12%);
+    opacity: 0.7;
+    animation: float-circles 15s ease infinite;
+  }
+
+  /* Text animations */  
   .text-gradient {
     @apply bg-clip-text text-transparent bg-bitcoin-gradient;
   }
@@ -158,10 +191,123 @@
     transform: translateX(-100%);
     animation: shimmer 2s infinite;
   }
-  
-  @keyframes shimmer {
-    100% {
-      transform: translateX(100%);
+
+  /* New text animations */
+  @keyframes letter-spacing {
+    0% { letter-spacing: -0.5em; opacity: 0; }
+    40% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes reveal-text {
+    0% { clip-path: inset(0 100% 0 0); }
+    100% { clip-path: inset(0 0 0 0); }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-text {
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  .animate-text.visible {
+    opacity: 1;
+  }
+
+  .letter-spacing {
+    display: inline-block;
+    animation: letter-spacing 1s forwards;
+  }
+
+  .reveal-text {
+    display: inline-block;
+    animation: reveal-text 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  .fade-in-up {
+    animation: fade-in-up 0.8s ease forwards;
+  }
+
+  .slide-in-left {
+    animation: slide-in-left 0.8s ease forwards;
+  }
+
+  .slide-in-right {
+    animation: slide-in-right 0.8s ease forwards;
+  }
+
+  /* Word by word animation */
+  .word-animation span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: word-appear 0.5s forwards;
+  }
+
+  @keyframes word-appear {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Character typing effect */
+  .typing-effect {
+    overflow: hidden;
+    border-right: 0.15em solid #F7931A;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #F7931A; }
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }

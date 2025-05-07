@@ -1,30 +1,67 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Shield, Rocket, TrendingUp } from 'lucide-react';
  
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const textElements = useRef<NodeListOf<Element> | null>(null);
+
+  useEffect(() => {
+    // Animation for text elements
+    if (sectionRef.current) {
+      textElements.current = sectionRef.current.querySelectorAll('.animate-text');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      textElements.current.forEach(el => {
+        observer.observe(el);
+      });
+      
+      return () => {
+        if (textElements.current) {
+          textElements.current.forEach(el => {
+            observer.unobserve(el);
+          });
+        }
+      };
+    }
+  }, []);
 
   return (
     <section 
       id="about" 
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-orange-900/20 to-black relative overflow-hidden"
+      className="py-20 relative overflow-hidden"
     >
-      {/* Bitcoin texture background */}
-      <div className="absolute inset-0 bg-texture opacity-10"></div>
+      {/* Bitcoin-themed animated background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black bg-opacity-80 z-10"></div>
+        <div className="absolute inset-0 bg-bitcoin-circles z-0"></div>
+        <div className="absolute inset-0 bg-texture opacity-30 z-5"></div>
+      </div>
+      
+      {/* Bitcoin network animation */}
+      <div className="absolute inset-0 overflow-hidden z-5">
+        <div className="bitcoin-network"></div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient shimmer">About BTCstack</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient shimmer animate-text reveal-text">About BTCstack</h2>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto animate-text fade-in-up">
             A revolutionary platform built to optimize your Bitcoin experience across multiple Layer 2 networks
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <div className="bg-black/30 backdrop-blur p-8 rounded-xl border border-bitcoin/20 hover:border-bitcoin/40 transition-all hover:-translate-y-1 group">
+          <div className="bg-black/30 backdrop-blur p-8 rounded-xl border border-bitcoin/20 hover:border-bitcoin/40 transition-all hover:-translate-y-1 group animate-text slide-in-left">
             <div className="mb-6 flex justify-center">
               <div className="w-16 h-16 bg-bitcoin/10 rounded-full flex items-center justify-center group-hover:bg-bitcoin/20 transition-all">
                 <Shield className="h-8 w-8 text-bitcoin" />
@@ -38,7 +75,7 @@ const About = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-black/30 backdrop-blur p-8 rounded-xl border border-bitcoin/20 hover:border-bitcoin/40 transition-all hover:-translate-y-1 group">
+          <div className="bg-black/30 backdrop-blur p-8 rounded-xl border border-bitcoin/20 hover:border-bitcoin/40 transition-all hover:-translate-y-1 group animate-text slide-in-up" style={{ animationDelay: "0.2s" }}>
             <div className="mb-6 flex justify-center">
               <div className="w-16 h-16 bg-bitcoin/10 rounded-full flex items-center justify-center group-hover:bg-bitcoin/20 transition-all">
                 <Rocket className="h-8 w-8 text-bitcoin" />
@@ -52,7 +89,7 @@ const About = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-black/30 backdrop-blur p-8 rounded-xl border border-bitcoin/20 hover:border-bitcoin/40 transition-all hover:-translate-y-1 group">
+          <div className="bg-black/30 backdrop-blur p-8 rounded-xl border border-bitcoin/20 hover:border-bitcoin/40 transition-all hover:-translate-y-1 group animate-text slide-in-right" style={{ animationDelay: "0.4s" }}>
             <div className="mb-6 flex justify-center">
               <div className="w-16 h-16 bg-bitcoin/10 rounded-full flex items-center justify-center group-hover:bg-bitcoin/20 transition-all">
                 <TrendingUp className="h-8 w-8 text-bitcoin" />
@@ -66,26 +103,26 @@ const About = () => {
           </div>
         </div>
 
-        <div className="mt-16 max-w-4xl mx-auto bg-black/40 backdrop-blur p-8 rounded-xl border border-bitcoin/20">
+        <div className="mt-16 max-w-4xl mx-auto bg-black/40 backdrop-blur p-8 rounded-xl border border-bitcoin/20 animate-text fade-in-up" style={{ animationDelay: "0.6s" }}>
           <h3 className="text-2xl font-bold mb-4 text-center text-white">Why Choose BTCstack?</h3>
           <ul className="space-y-4 text-white/80">
-            <li className="flex items-start">
+            <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "0.7s" }}>
               <span className="text-bitcoin mr-2">→</span> 
               <span>Single interface to access all major Bitcoin Layer 2 solutions</span>
             </li>
-            <li className="flex items-start">
+            <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "0.8s" }}>
               <span className="text-bitcoin mr-2">→</span>
               <span>Advanced security that exceeds industry standards with quantum resistance</span>
             </li>
-            <li className="flex items-start">
+            <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "0.9s" }}>
               <span className="text-bitcoin mr-2">→</span>
               <span>Optimized routing for lowest fees and fastest transaction speeds</span>
             </li>
-            <li className="flex items-start">
+            <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "1.0s" }}>
               <span className="text-bitcoin mr-2">→</span>
               <span>Yield optimization strategies that maximize your Bitcoin returns</span>
             </li>
-            <li className="flex items-start">
+            <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "1.1s" }}>
               <span className="text-bitcoin mr-2">→</span>
               <span>Developer-friendly ecosystem with comprehensive APIs and documentation</span>
             </li>
