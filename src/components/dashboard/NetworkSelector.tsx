@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bitcoin, Lightning } from 'lucide-react';
+import { Bitcoin, Zap } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type NetworkType = 'lightning' | 'liquid' | 'rootstock';
@@ -15,7 +15,7 @@ const NetworkSelector = ({ activeNetwork, setActiveNetwork }: NetworkSelectorPro
     {
       id: 'lightning' as NetworkType,
       name: 'Lightning',
-      icon: <Lightning className="h-5 w-5" />,
+      icon: <Zap className="h-5 w-5" />,
       color: 'text-yellow-400',
       fees: 'Very Low',
       speed: 'Instant',
