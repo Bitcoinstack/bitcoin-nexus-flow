@@ -89,7 +89,7 @@ const About = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white animate-text reveal-text">About BTCstack</h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto animate-text fade-in-up split-words">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto animate-text fade-in-up">
             A revolutionary platform built to optimize your Bitcoin experience across multiple Layer 2 networks
           </p>
         </div>
@@ -103,12 +103,12 @@ const About = () => {
               </div>
             </div>
             <h3 className="text-2xl font-bold mb-4 text-bitcoin">Quantum Resistant Security</h3>
-            <div className="typing-container animate-text">
+            <div className="typing-container animate-text space-y-4">
               <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Our protocol implements quantum-resistant algorithms and zero-knowledge proofs to create an unprecedented layer of 
                 security for your Bitcoin transactions.
               </p>
-              <p className="text-white/70 mt-2" style={{ opacity: 0, transform: 'translateY(10px)' }}>
+              <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Future-proof your assets against emerging threats with our advanced security measures.
               </p>
             </div>
@@ -122,11 +122,11 @@ const About = () => {
               </div>
             </div>
             <h3 className="text-2xl font-bold mb-4 text-bitcoin">Real-time Layer 2 Switching</h3>
-            <div className="typing-container animate-text">
+            <div className="typing-container animate-text space-y-4">
               <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Seamlessly switch between Rootstock, Liquid, Lightning, and other Bitcoin Layer 2 solutions in real-time.
               </p>
-              <p className="text-white/70 mt-2" style={{ opacity: 0, transform: 'translateY(10px)' }}>
+              <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Our intelligent routing optimizes for lowest fees, fastest confirmation times, and best overall performance.
               </p>
             </div>
@@ -140,11 +140,11 @@ const About = () => {
               </div>
             </div>
             <h3 className="text-2xl font-bold mb-4 text-bitcoin">Bitcoin Yield Aggregator</h3>
-            <div className="typing-container animate-text">
+            <div className="typing-container animate-text space-y-4">
               <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Automatically optimize your Bitcoin holdings through Layer 2 DeFi protocols, ETFs, and stablecoin swaps.
               </p>
-              <p className="text-white/70 mt-2" style={{ opacity: 0, transform: 'translateY(10px)' }}>
+              <p className="text-white/70" style={{ opacity: 0, transform: 'translateY(10px)' }}>
                 Generate the highest possible yields, all managed through a single unified interface.
               </p>
             </div>
@@ -156,23 +156,23 @@ const About = () => {
           <ul className="space-y-4 text-white/80">
             <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "0.7s" }}>
               <span className="text-bitcoin mr-2">→</span> 
-              <span className="split-words">Single interface to access all major Bitcoin Layer 2 solutions</span>
+              <span>Single interface to access all major Bitcoin Layer 2 solutions</span>
             </li>
             <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "0.8s" }}>
               <span className="text-bitcoin mr-2">→</span>
-              <span className="split-words">Advanced security that exceeds industry standards with quantum resistance</span>
+              <span>Advanced security that exceeds industry standards with quantum resistance</span>
             </li>
             <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "0.9s" }}>
               <span className="text-bitcoin mr-2">→</span>
-              <span className="split-words">Optimized routing for lowest fees and fastest transaction speeds</span>
+              <span>Optimized routing for lowest fees and fastest transaction speeds</span>
             </li>
             <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "1.0s" }}>
               <span className="text-bitcoin mr-2">→</span>
-              <span className="split-words">Yield optimization strategies that maximize your Bitcoin returns</span>
+              <span>Yield optimization strategies that maximize your Bitcoin returns</span>
             </li>
             <li className="flex items-start animate-text slide-in-right" style={{ animationDelay: "1.1s" }}>
               <span className="text-bitcoin mr-2">→</span>
-              <span className="split-words">Developer-friendly ecosystem with comprehensive APIs and documentation</span>
+              <span>Developer-friendly ecosystem with comprehensive APIs and documentation</span>
             </li>
           </ul>
         </div>

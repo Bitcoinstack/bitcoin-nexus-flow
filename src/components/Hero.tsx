@@ -46,8 +46,17 @@ const Hero = () => {
       });
     });
 
+    // Animate Bitcoin logo
+    const animateBitcoinLogo = () => {
+      const logo = document.querySelector('.btc-logo');
+      if (logo instanceof HTMLElement) {
+        logo.classList.add('animate-spin-slow');
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
     setTimeout(animateText, 300);
+    setTimeout(animateBitcoinLogo, 500);
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -64,7 +73,7 @@ const Hero = () => {
     >
       {/* Animated Bitcoin Logo */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20">
-        <Bitcoin className="w-[500px] h-[500px] text-bitcoin animate-rotate-slow" />
+        <Bitcoin className="w-[500px] h-[500px] text-bitcoin btc-logo animate-pulse-orange" />
       </div>
 
       {/* Animated patterns */}
@@ -76,17 +85,21 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-12 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-          BTCstack
-        </h1>
-        <p className="text-xl md:text-2xl text-white mb-8 split-words hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)' }}>
+        <div className="flex items-center justify-center mb-4 gap-3">
+          <Bitcoin className="h-12 w-12 text-bitcoin animate-spin-slow btc-logo-header" />
+          <h1 className="text-5xl md:text-7xl font-bold text-white">
+            BTCstack
+          </h1>
+        </div>
+        
+        <p className="text-xl md:text-2xl text-white mb-8 hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)' }}>
           The ultimate Bitcoin Layer 2 Aggregator Protocol
         </p>
 
         <div className="max-w-3xl mx-auto mb-12 bg-black/30 backdrop-blur-md p-6 rounded-xl animate-fade-in hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)', transitionDelay: '0.3s' }}>
-          <p className="text-lg text-white mb-4">
-            <span className="block mb-2 split-words">Seamlessly switch between Rootstock, Liquid, and Lightning for optimal fees and performance.</span>
-            <span className="block split-words">Experience quantum-resistant zero-knowledge security and maximize your Bitcoin yield.</span>
+          <p className="text-lg text-white mb-4 space-y-3">
+            <span className="block mb-2">Seamlessly switch between Rootstock, Liquid, and Lightning for optimal fees and performance.</span>
+            <span className="block">Experience quantum-resistant zero-knowledge security and maximize your Bitcoin yield.</span>
           </p>
         </div>
 
@@ -131,4 +144,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

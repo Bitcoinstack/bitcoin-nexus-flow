@@ -34,7 +34,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 bg-gradient-to-r from-black/80 to-black/70 backdrop-blur-md z-50 px-4 py-3 md:px-8 transition-all duration-300 ${scrolled ? 'shadow-lg shadow-bitcoin/10' : ''}`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2 animate-fade-in">
-          <Bitcoin className="h-8 w-8 text-bitcoin animate-pulse-orange" />
+          <Bitcoin className="h-8 w-8 text-bitcoin animate-spin-slow" />
           <span className="text-2xl font-bold text-white">BTCstack</span>
         </Link>
 

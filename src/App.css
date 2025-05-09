@@ -53,3 +53,39 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10;
 }
 
+/* Animation for Bitcoin logo */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.btc-logo-header {
+  animation: pulse-orange 2s infinite alternate, spin-slow 15s linear infinite;
+}
+
+@keyframes pulse-orange {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(247, 147, 26, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(247, 147, 26, 0.8));
+  }
+}
+
+/* Space paragraphs properly */
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
