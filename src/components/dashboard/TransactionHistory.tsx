@@ -38,8 +38,8 @@ const TransactionHistory = ({ activeNetwork }: TransactionHistoryProps) => {
   const transactions = mockTransactions[activeNetwork] || [];
 
   return (
-    <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl border border-white/10 flex flex-col h-full">
-      <h3 className="text-xl font-bold mb-4">Transaction History</h3>
+    <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col h-full">
+      <h3 className="text-lg sm:text-xl font-bold mb-4">Transaction History</h3>
       
       <div className="overflow-x-auto -mx-4 px-4">
         <Table>
@@ -47,10 +47,10 @@ const TransactionHistory = ({ activeNetwork }: TransactionHistoryProps) => {
             <TableRow className="border-b border-white/10">
               <TableHead className="text-white">Type</TableHead>
               <TableHead className="text-white">Amount</TableHead>
-              <TableHead className="text-white">Date</TableHead>
+              <TableHead className="text-white hidden sm:table-cell">Date</TableHead>
               <TableHead className="text-white">Status</TableHead>
-              <TableHead className="text-white text-right">Network Fee</TableHead>
-              <TableHead className="text-white text-right">Confirm Time</TableHead>
+              <TableHead className="text-white text-right hidden md:table-cell">Network Fee</TableHead>
+              <TableHead className="text-white text-right hidden sm:table-cell">Confirm Time</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -74,22 +74,24 @@ const TransactionHistory = ({ activeNetwork }: TransactionHistoryProps) => {
                   <TableCell className={tx.type === 'receive' ? 'text-green-400' : 'text-red-400'}>
                     {tx.type === 'receive' ? '+' : '-'}{tx.amount} BTC
                   </TableCell>
-                  <TableCell>{tx.date}</TableCell>
+                  <TableCell className="hidden sm:table-cell">{tx.date}</TableCell>
                   <TableCell>
                     {tx.status === 'confirmed' ? (
                       <div className="flex items-center">
                         <Check className="h-4 w-4 text-green-400 mr-1" />
-                        <span>Confirmed</span>
+                        <span className="hidden sm:inline">Confirmed</span>
+                        <span className="sm:hidden">✓</span>
                       </div>
                     ) : (
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 text-yellow-400 mr-1" />
-                        <span>Pending</span>
+                        <span className="hidden sm:inline">Pending</span>
+                        <span className="sm:hidden">⌛</span>
                       </div>
                     )}
                   </TableCell>
-                  <TableCell className="text-right">{tx.fee}</TableCell>
-                  <TableCell className="text-right">{tx.confirmTime}</TableCell>
+                  <TableCell className="text-right hidden md:table-cell">{tx.fee}</TableCell>
+                  <TableCell className="text-right hidden sm:table-cell">{tx.confirmTime}</TableCell>
                 </TableRow>
               ))
             ) : (
@@ -103,7 +105,7 @@ const TransactionHistory = ({ activeNetwork }: TransactionHistoryProps) => {
         </Table>
       </div>
       
-      <div className="flex justify-between items-center mt-4 text-sm text-gray-400">
+      <div className="flex justify-between items-center mt-4 text-xs sm:text-sm text-gray-400">
         <span>Showing {transactions.length} transactions</span>
         <div>
           <span className="text-bitcoin underline cursor-pointer hover:text-bitcoin-dark">View all</span>

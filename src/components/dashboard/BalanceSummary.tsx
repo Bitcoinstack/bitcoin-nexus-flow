@@ -20,39 +20,39 @@ const BalanceSummary = ({ activeNetwork }: BalanceSummaryProps) => {
   const activeData = networkBalances[activeNetwork];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {/* Total Balance Card */}
-      <div className="bg-gradient-to-br from-bitcoin/20 to-black p-6 rounded-xl border border-white/10 flex flex-col">
+      <div className="bg-gradient-to-br from-bitcoin/20 to-black p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col">
         <h3 className="text-gray-400 mb-1 text-sm font-medium">Total Balance</h3>
         <div className="flex items-end gap-2">
-          <span className="text-3xl font-bold text-white">{totalBtc.toFixed(4)}</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white">{totalBtc.toFixed(4)}</span>
           <span className="text-bitcoin">BTC</span>
         </div>
-        <div className="mt-4 text-sm text-gray-400">
+        <div className="mt-3 sm:mt-4 text-sm text-gray-400">
           <span>≈ ${(totalBtc * 55000).toLocaleString()}</span>
         </div>
       </div>
 
       {/* Active Network Card */}
-      <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl border border-white/10 flex flex-col">
+      <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col">
         <h3 className="text-gray-400 mb-1 text-sm font-medium">{activeNetwork.charAt(0).toUpperCase() + activeNetwork.slice(1)} Balance</h3>
         <div className="flex items-end gap-2">
-          <span className="text-3xl font-bold text-white">{activeData.balance.toFixed(4)}</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white">{activeData.balance.toFixed(4)}</span>
           <span className="text-bitcoin">BTC</span>
         </div>
-        <div className="mt-4 text-sm text-gray-400">
+        <div className="mt-3 sm:mt-4 text-sm text-gray-400">
           <span>{activeData.change > 0 ? '+' : ''}{activeData.change}% this week</span>
         </div>
       </div>
 
       {/* Yield Card */}
-      <div className="bg-black/40 backdrop-blur-md p-6 rounded-xl border border-white/10 flex flex-col">
+      <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col">
         <h3 className="text-gray-400 mb-1 text-sm font-medium">Total Yield</h3>
         <div className="flex items-end gap-2">
-          <span className="text-3xl font-bold text-white">{totalYield.toFixed(4)}</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white">{totalYield.toFixed(4)}</span>
           <span className="text-bitcoin">BTC</span>
         </div>
-        <div className="mt-4 flex items-center text-sm text-green-400">
+        <div className="mt-3 sm:mt-4 flex items-center text-sm text-green-400">
           <TrendingUp className="h-4 w-4 mr-1" />
           <span>3.2% AVG APR</span>
         </div>
