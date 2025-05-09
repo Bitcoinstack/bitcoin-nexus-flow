@@ -89,3 +89,33 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
+/* Fade in animation for BTCstack logo */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease forwards;
+}
+
+/* Dashboard Styles */
+.network-selector {
+  transition: all 0.2s ease;
+}
+
+.network-selector:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(247, 147, 26, 0.2);
+}
+
+.active-network {
+  border-color: #F7931A;
+  background-color: rgba(247, 147, 26, 0.1);
+}

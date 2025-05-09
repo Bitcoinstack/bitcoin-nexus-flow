@@ -87,7 +87,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-12 text-center">
         <div className="flex items-center justify-center mb-4 gap-3">
           <Bitcoin className="h-12 w-12 text-bitcoin animate-spin-slow btc-logo-header" />
-          <h1 className="text-5xl md:text-7xl font-bold text-white">
+          <h1 className="text-5xl md:text-7xl font-bold text-white animate-fade-in">
             BTCstack
           </h1>
         </div>
