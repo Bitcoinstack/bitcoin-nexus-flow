@@ -41,3 +41,15 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Make sure text is visible */
+.text-white {
+  color: #fff;
+}
+
+/* Ensure no overlapping elements on important text */
+h1, h2, h3, h4, h5, h6 {
+  position: relative;
+  z-index: 10;
+}
+

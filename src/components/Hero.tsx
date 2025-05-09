@@ -76,7 +76,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-12 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient animate-fade-in shimmer split-letters">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
           BTCstack
         </h1>
         <p className="text-xl md:text-2xl text-white mb-8 split-words hero-text-animate" style={{ opacity: 0, transform: 'translateY(20px)' }}>
@@ -131,3 +131,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
