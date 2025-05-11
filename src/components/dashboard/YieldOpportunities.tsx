@@ -39,7 +39,7 @@ const YieldOpportunities = () => {
         toast({
           title: `Successfully staked in ${opportunity.name}`,
           description: `Your stake is now earning ${opportunity.apy}% APY`,
-          variant: "success",
+          variant: "default", // Changed from "success" to "default" to match allowed variants
         });
       } else {
         toast({
