@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bitcoin, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 type NetworkType = 'lightning' | 'liquid' | 'rootstock';
@@ -15,7 +15,6 @@ const NetworkSelector = ({ activeNetwork, setActiveNetwork }: NetworkSelectorPro
     {
       id: 'lightning' as NetworkType,
       name: 'Lightning',
-      icon: <Zap className="h-5 w-5" />,
       color: 'text-yellow-400',
       fees: 'Very Low',
       speed: 'Instant',
@@ -24,7 +23,6 @@ const NetworkSelector = ({ activeNetwork, setActiveNetwork }: NetworkSelectorPro
     {
       id: 'liquid' as NetworkType,
       name: 'Liquid',
-      icon: <Bitcoin className="h-5 w-5" />,
       color: 'text-blue-400',
       fees: 'Low',
       speed: 'Minutes',
@@ -33,7 +31,6 @@ const NetworkSelector = ({ activeNetwork, setActiveNetwork }: NetworkSelectorPro
     {
       id: 'rootstock' as NetworkType,
       name: 'Rootstock',
-      icon: <Bitcoin className="h-5 w-5" />,
       color: 'text-green-400',
       fees: 'Medium',
       speed: 'Minutes',
@@ -63,14 +60,11 @@ const NetworkSelector = ({ activeNetwork, setActiveNetwork }: NetworkSelectorPro
               transition-all duration-200 w-full sm:flex-1
             `}
           >
-            <div className={`p-3 rounded-full bg-white/5 mb-3 ${network.color}`}>
-              {network.icon}
-            </div>
-            <h3 className="text-lg sm:text-xl font-medium">{network.name}</h3>
-            <p className="text-xs sm:text-sm text-gray-400 mt-2">{network.description}</p>
+            <h3 className={`text-lg sm:text-xl font-medium mb-2 ${network.color}`}>{network.name}</h3>
+            <p className="text-xs sm:text-sm text-gray-400 text-center">{network.description}</p>
             <div className="mt-3 sm:mt-4 flex gap-2 sm:gap-4 text-xs">
-              <span className="px-2 py-1 bg-white/10 rounded-full">Fee: {network.fees}</span>
-              <span className="px-2 py-1 bg-white/10 rounded-full">Speed: {network.speed}</span>
+              <span className="px-2 py-1 bg-white/10 rounded-full hover:bg-bitcoin/20 transition-colors">Fee: {network.fees}</span>
+              <span className="px-2 py-1 bg-white/10 rounded-full hover:bg-bitcoin/20 transition-colors">Speed: {network.speed}</span>
             </div>
           </ToggleGroupItem>
         ))}
