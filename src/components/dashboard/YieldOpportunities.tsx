@@ -1,7 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { TrendingUp } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface YieldOption {
   id: string;
@@ -11,16 +12,44 @@ interface YieldOption {
   minAmount: number;
   risk: 'Low' | 'Medium' | 'High';
   lockPeriod: string;
+  staked: boolean;
 }
 
 const YieldOpportunities = () => {
-  // Combined yield opportunities without network separation
-  const opportunities: YieldOption[] = [
-    { id: 'y1', name: 'BTC Staking', provider: 'Bitcoin Labs', apy: 2.5, minAmount: 0.01, risk: 'Low', lockPeriod: 'No lock' },
-    { id: 'y2', name: 'BTC Lending', provider: 'Satoshi Finance', apy: 3.8, minAmount: 0.1, risk: 'Medium', lockPeriod: '30 days' },
-    { id: 'y3', name: 'BTC/USDT LP', provider: 'Bitcoin DEX', apy: 5.2, minAmount: 0.05, risk: 'Medium', lockPeriod: 'No lock' },
-    { id: 'y4', name: 'BTC Mining', provider: 'Hash Power', apy: 4.2, minAmount: 0.01, risk: 'Medium', lockPeriod: 'No lock' },
-  ];
+  const { toast } = useToast();
+  const [opportunities, setOpportunities] = useState<YieldOption[]>([
+    { id: 'y1', name: 'BTC Staking', provider: 'Bitcoin Labs', apy: 2.5, minAmount: 0.01, risk: 'Low', lockPeriod: 'No lock', staked: false },
+    { id: 'y2', name: 'BTC Lending', provider: 'Satoshi Finance', apy: 3.8, minAmount: 0.1, risk: 'Medium', lockPeriod: '30 days', staked: false },
+    { id: 'y3', name: 'BTC/USDT LP', provider: 'Bitcoin DEX', apy: 5.2, minAmount: 0.05, risk: 'Medium', lockPeriod: 'No lock', staked: false },
+    { id: 'y4', name: 'BTC Mining', provider: 'Hash Power', apy: 4.2, minAmount: 0.01, risk: 'Medium', lockPeriod: 'No lock', staked: false },
+  ]);
+
+  const handleStake = (id: string) => {
+    setOpportunities(prevOpportunities => 
+      prevOpportunities.map(opportunity => 
+        opportunity.id === id 
+          ? { ...opportunity, staked: !opportunity.staked } 
+          : opportunity
+      )
+    );
+
+    const opportunity = opportunities.find(opp => opp.id === id);
+    if (opportunity) {
+      if (!opportunity.staked) {
+        toast({
+          title: `Successfully staked in ${opportunity.name}`,
+          description: `Your stake is now earning ${opportunity.apy}% APY`,
+          variant: "success",
+        });
+      } else {
+        toast({
+          title: `Unstaked from ${opportunity.name}`,
+          description: "Your funds have been returned to your wallet",
+          variant: "default",
+        });
+      }
+    }
+  };
 
   return (
     <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col h-full">
@@ -62,8 +91,15 @@ const YieldOpportunities = () => {
               </div>
               
               <div className="flex justify-end mt-3">
-                <Button size="sm" className="bg-bitcoin hover:bg-bitcoin-dark text-white text-xs">
-                  Stake BTC
+                <Button 
+                  size="sm" 
+                  className={option.staked 
+                    ? "bg-gray-700 hover:bg-gray-600 text-white text-xs" 
+                    : "bg-bitcoin hover:bg-bitcoin-dark text-white text-xs"
+                  }
+                  onClick={() => handleStake(option.id)}
+                >
+                  {option.staked ? "Unstake" : "Stake BTC"}
                 </Button>
               </div>
             </div>

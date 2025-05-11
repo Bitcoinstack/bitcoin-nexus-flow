@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -27,6 +26,35 @@ const Hero = () => {
         }
       });
     };
+
+    // Split text animation for character by character effect for BTCstack logo text
+    const logoText = document.querySelector('.logo-text');
+    if (logoText) {
+      const text = logoText.textContent || '';
+      const letters = text.split('');
+      
+      logoText.textContent = '';
+      
+      letters.forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.className = 'animated-letter inline-block';
+        span.textContent = letter;
+        span.style.opacity = '0';
+        span.style.transform = 'translateY(20px)';
+        span.style.transition = `opacity 0.3s ease ${index * 0.05}s, transform 0.3s ease ${index * 0.05}s`;
+        logoText.appendChild(span);
+      });
+      
+      // Trigger the animation after a small delay
+      setTimeout(() => {
+        document.querySelectorAll('.animated-letter').forEach((letter) => {
+          if (letter instanceof HTMLElement) {
+            letter.style.opacity = '1';
+            letter.style.transform = 'translateY(0)';
+          }
+        });
+      }, 300);
+    }
 
     // Split text animation for character by character effect
     document.querySelectorAll('.split-letters').forEach(element => {
@@ -87,7 +115,7 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-12 text-center">
         <div className="flex items-center justify-center mb-4 gap-3">
           <Bitcoin className="h-12 w-12 text-bitcoin animate-spin-slow btc-logo-header" />
-          <h1 className="text-5xl md:text-7xl font-bold text-white animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold text-white animate-fade-in logo-text">
             BTCstack
           </h1>
         </div>
