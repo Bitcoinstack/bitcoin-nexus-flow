@@ -2,34 +2,22 @@
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
 
-interface BalanceSummaryProps {
-  activeNetwork: 'lightning' | 'liquid' | 'rootstock';
-}
-
-const BalanceSummary = ({ activeNetwork }: BalanceSummaryProps) => {
-  // Mock data for each network
-  const networkBalances = {
-    lightning: { balance: 0.32, yield: 0, change: 0 },
-    liquid: { balance: 1.25, yield: 0.015, change: 2.3 },
-    rootstock: { balance: 0.85, yield: 0.042, change: 4.8 }
-  };
-
-  const totalBtc = Object.values(networkBalances).reduce((acc, curr) => acc + curr.balance, 0);
-  const totalYield = Object.values(networkBalances).reduce((acc, curr) => acc + curr.yield, 0);
+const BalanceSummary = () => {
+  // Simplified data without network specifics
+  const balance = 2.42; // Total BTC balance
+  const yield_amount = 0.057; // Total yield
   
-  const activeData = networkBalances[activeNetwork];
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {/* Total Balance Card */}
       <div className="bg-gradient-to-br from-bitcoin/20 to-black p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col relative overflow-hidden group">
         <h3 className="text-gray-400 mb-1 text-sm font-medium">Total Balance</h3>
         <div className="flex items-end gap-2">
-          <span className="text-2xl sm:text-3xl font-bold text-white">{totalBtc.toFixed(4)}</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white">{balance.toFixed(4)}</span>
           <span className="text-bitcoin">BTC</span>
         </div>
         <div className="mt-3 sm:mt-4 text-sm text-gray-400">
-          <span>≈ ${(totalBtc * 55000).toLocaleString()}</span>
+          <span>≈ ${(balance * 55000).toLocaleString()}</span>
         </div>
         
         {/* Hover information */}
@@ -49,15 +37,15 @@ const BalanceSummary = ({ activeNetwork }: BalanceSummaryProps) => {
         </div>
       </div>
 
-      {/* Active Network Card */}
+      {/* Available Balance Card */}
       <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col">
-        <h3 className="text-gray-400 mb-1 text-sm font-medium">{activeNetwork.charAt(0).toUpperCase() + activeNetwork.slice(1)} Balance</h3>
+        <h3 className="text-gray-400 mb-1 text-sm font-medium">Available Balance</h3>
         <div className="flex items-end gap-2">
-          <span className="text-2xl sm:text-3xl font-bold text-white">{activeData.balance.toFixed(4)}</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white">{(balance * 0.9).toFixed(4)}</span>
           <span className="text-bitcoin">BTC</span>
         </div>
         <div className="mt-3 sm:mt-4 text-sm text-gray-400">
-          <span>{activeData.change > 0 ? '+' : ''}{activeData.change}% this week</span>
+          <span>10% reserved for fees</span>
         </div>
       </div>
 
@@ -65,7 +53,7 @@ const BalanceSummary = ({ activeNetwork }: BalanceSummaryProps) => {
       <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col">
         <h3 className="text-gray-400 mb-1 text-sm font-medium">Total Yield</h3>
         <div className="flex items-end gap-2">
-          <span className="text-2xl sm:text-3xl font-bold text-white">{totalYield.toFixed(4)}</span>
+          <span className="text-2xl sm:text-3xl font-bold text-white">{yield_amount.toFixed(4)}</span>
           <span className="text-bitcoin">BTC</span>
         </div>
         <div className="mt-3 sm:mt-4 flex items-center text-sm text-green-400">

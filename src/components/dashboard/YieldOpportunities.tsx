@@ -3,10 +3,6 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { TrendingUp } from 'lucide-react';
 
-interface YieldOpportunitiesProps {
-  activeNetwork: 'lightning' | 'liquid' | 'rootstock';
-}
-
 interface YieldOption {
   id: string;
   name: string;
@@ -17,24 +13,14 @@ interface YieldOption {
   lockPeriod: string;
 }
 
-const YieldOpportunities = ({ activeNetwork }: YieldOpportunitiesProps) => {
-  // Mock yield options for each network
-  const yieldOptions: Record<string, YieldOption[]> = {
-    lightning: [
-      { id: 'y1', name: 'Lightning Pool', provider: 'Lightning Labs', apy: 2.5, minAmount: 0.01, risk: 'Low', lockPeriod: 'No lock' },
-    ],
-    liquid: [
-      { id: 'y2', name: 'L-BTC Staking', provider: 'Liquid Network', apy: 3.8, minAmount: 0.1, risk: 'Medium', lockPeriod: '30 days' },
-      { id: 'y3', name: 'L-BTC/USDT LP', provider: 'Liquid DEX', apy: 5.2, minAmount: 0.05, risk: 'Medium', lockPeriod: 'No lock' },
-    ],
-    rootstock: [
-      { id: 'y4', name: 'rBTC Lending', provider: 'Sovryn', apy: 4.2, minAmount: 0.01, risk: 'Medium', lockPeriod: 'No lock' },
-      { id: 'y5', name: 'rBTC/DOC LP', provider: 'RSK Swap', apy: 7.5, minAmount: 0.05, risk: 'High', lockPeriod: 'No lock' },
-      { id: 'y6', name: 'Money on Chain', provider: 'MOC', apy: 2.8, minAmount: 0.001, risk: 'Low', lockPeriod: 'No lock' },
-    ]
-  };
-
-  const opportunities = yieldOptions[activeNetwork] || [];
+const YieldOpportunities = () => {
+  // Combined yield opportunities without network separation
+  const opportunities: YieldOption[] = [
+    { id: 'y1', name: 'BTC Staking', provider: 'Bitcoin Labs', apy: 2.5, minAmount: 0.01, risk: 'Low', lockPeriod: 'No lock' },
+    { id: 'y2', name: 'BTC Lending', provider: 'Satoshi Finance', apy: 3.8, minAmount: 0.1, risk: 'Medium', lockPeriod: '30 days' },
+    { id: 'y3', name: 'BTC/USDT LP', provider: 'Bitcoin DEX', apy: 5.2, minAmount: 0.05, risk: 'Medium', lockPeriod: 'No lock' },
+    { id: 'y4', name: 'BTC Mining', provider: 'Hash Power', apy: 4.2, minAmount: 0.01, risk: 'Medium', lockPeriod: 'No lock' },
+  ];
 
   return (
     <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col h-full">
@@ -84,7 +70,7 @@ const YieldOpportunities = ({ activeNetwork }: YieldOpportunitiesProps) => {
           ))
         ) : (
           <div className="text-center py-10 text-gray-400">
-            No yield opportunities available on {activeNetwork} network
+            No yield opportunities available
           </div>
         )}
       </div>

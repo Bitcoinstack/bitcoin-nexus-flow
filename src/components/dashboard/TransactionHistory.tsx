@@ -3,10 +3,6 @@ import React from 'react';
 import { Check, Clock, TrendingDown, TrendingUp } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-interface TransactionHistoryProps {
-  activeNetwork: 'lightning' | 'liquid' | 'rootstock';
-}
-
 interface Transaction {
   id: string;
   type: 'send' | 'receive' | 'swap';
@@ -17,25 +13,15 @@ interface Transaction {
   confirmTime: string;
 }
 
-const TransactionHistory = ({ activeNetwork }: TransactionHistoryProps) => {
-  // Mock transaction data for each network
-  const mockTransactions: Record<string, Transaction[]> = {
-    lightning: [
-      { id: 'tx1', type: 'receive', amount: 0.05, date: '2025-05-08', status: 'confirmed', fee: '1 sat', confirmTime: 'Instant' },
-      { id: 'tx2', type: 'send', amount: 0.02, date: '2025-05-07', status: 'confirmed', fee: '2 sat', confirmTime: 'Instant' },
-      { id: 'tx3', type: 'receive', amount: 0.01, date: '2025-05-05', status: 'confirmed', fee: '1 sat', confirmTime: 'Instant' },
-    ],
-    liquid: [
-      { id: 'tx4', type: 'swap', amount: 0.3, date: '2025-05-09', status: 'confirmed', fee: '0.00001 BTC', confirmTime: '2 min' },
-      { id: 'tx5', type: 'send', amount: 0.12, date: '2025-05-06', status: 'confirmed', fee: '0.00002 BTC', confirmTime: '2 min' },
-    ],
-    rootstock: [
-      { id: 'tx6', type: 'receive', amount: 0.5, date: '2025-05-09', status: 'confirmed', fee: '0.00004 BTC', confirmTime: '5 min' },
-      { id: 'tx7', type: 'send', amount: 0.15, date: '2025-05-08', status: 'pending', fee: '0.00003 BTC', confirmTime: '~5 min' },
-    ]
-  };
-
-  const transactions = mockTransactions[activeNetwork] || [];
+const TransactionHistory = () => {
+  // Combined transaction data without network separation
+  const transactions: Transaction[] = [
+    { id: 'tx1', type: 'receive', amount: 0.05, date: '2025-05-08', status: 'confirmed', fee: '1 sat', confirmTime: 'Instant' },
+    { id: 'tx4', type: 'swap', amount: 0.3, date: '2025-05-09', status: 'confirmed', fee: '0.00001 BTC', confirmTime: '2 min' },
+    { id: 'tx6', type: 'receive', amount: 0.5, date: '2025-05-09', status: 'confirmed', fee: '0.00004 BTC', confirmTime: '5 min' },
+    { id: 'tx2', type: 'send', amount: 0.02, date: '2025-05-07', status: 'confirmed', fee: '2 sat', confirmTime: 'Instant' },
+    { id: 'tx7', type: 'send', amount: 0.15, date: '2025-05-08', status: 'pending', fee: '0.00003 BTC', confirmTime: '~5 min' },
+  ];
 
   return (
     <div className="bg-black/40 backdrop-blur-md p-4 sm:p-6 rounded-xl border border-white/10 flex flex-col h-full">
@@ -97,7 +83,7 @@ const TransactionHistory = ({ activeNetwork }: TransactionHistoryProps) => {
             ) : (
               <TableRow>
                 <TableCell colSpan={6} className="text-center py-6 text-gray-400">
-                  No transactions found on {activeNetwork} network
+                  No transactions found
                 </TableCell>
               </TableRow>
             )}
