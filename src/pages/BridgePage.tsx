@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Bitcoin, ArrowRightLeft, ChevronDown, Network, Bridge } from 'lucide-react';
+import { Bitcoin, ArrowRightLeft, ChevronDown, Network } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
@@ -107,7 +107,7 @@ const BridgePage = () => {
         <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-5 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <h1 className="text-2xl font-bold">Bridge</h1>
-            <Bridge className="h-6 w-6 text-bitcoin" />
+            <Bitcoin className="h-6 w-6 text-bitcoin" />
           </div>
           
           {/* Source Network Selection */}
