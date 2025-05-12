@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bitcoin, Wallet } from 'lucide-react';
+import { Bitcoin, Link as LinkIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const DashboardNavbar = () => {
@@ -44,8 +44,8 @@ const DashboardNavbar = () => {
         
         <div className="flex items-center">
           <Button variant="outline" size="sm" className="border-bitcoin/50 text-bitcoin hover:bg-bitcoin/10">
-            <Wallet className="w-4 h-4 mr-2" />
-            0x12...A8B9
+            <LinkIcon className="w-4 h-4 mr-2" />
+            Connect Wallet
           </Button>
         </div>
       </div>
