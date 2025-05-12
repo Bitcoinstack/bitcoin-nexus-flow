@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import YieldOptimizerPage from "./pages/YieldOptimizerPage";
 import NotFound from "./pages/NotFound";
+import SwapPage from "./pages/SwapPage";
+import BridgePage from "./pages/BridgePage";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/yield-optimizer" element={<YieldOptimizerPage />} />
+          <Route path="/dashboard/swap" element={<SwapPage />} />
+          <Route path="/dashboard/bridge" element={<BridgePage />} />
           {/* Redirect missing routes to 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
